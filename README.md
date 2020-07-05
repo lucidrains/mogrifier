@@ -16,7 +16,7 @@ $ pip install mogrifier
 
 ```python
 import torch
-from mogrifier.mogrifier import Mogrifier
+from mogrifier import Mogrifier
 
 m = Mogrifier(
     dim = 512,

@@ -21,7 +21,7 @@ from mogrifier import Mogrifier
 m = Mogrifier(
     dim = 512,
     iters = 5,   # number of iterations, defaults to 5 as paper recommended for LSTM
-    k = 16       # factorize weight matrices into (dim x k) and (k x dim)
+    k = 16       # factorize weight matrices into (dim x k) and (k x dim), if specified
 )
 
 x = torch.randn(1, 16, 512)

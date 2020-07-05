@@ -26,7 +26,7 @@ class Mogrifier(nn.Module):
         x, h = map(lambda t: t.reshape(-1, dim), (x, h))
 
         for ind, W in enumerate(self.weights):
-            if (ind % 2) == 1:
+            if (ind % 2) == 0:
                 x = 2 * W(h).sigmoid() * x
             else:
                 h = 2 * W(x).sigmoid() * h

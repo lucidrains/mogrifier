@@ -1,5 +1,7 @@
 <img src="./mogrifier.png" width="600px"></img>
 
+[![PyPI version](https://badge.fury.io/py/mogrifier.svg)](https://badge.fury.io/py/mogrifier)
+
 ## Mogrifier
 
 A complete implementation of <a href="https://openreview.net/forum?id=SJe5P6EYvS">Mogrifier</a>, a circuit for enhancing LSTMs and potentially other networks. It modulates two vectors by having each gate the other in an interleaved fashion.

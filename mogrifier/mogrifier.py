@@ -1,5 +1,4 @@
 import torch
-import math
 from torch import nn
 
 def weight(dim_in, dim_out, factorize_k = None):
@@ -17,7 +16,6 @@ class Mogrifier(nn.Module):
     def __init__(self, dim, iters = 5, factorize_k = None):
         super().__init__()
         self.dim = dim
-        self.iters = iters
         self.weights = nn.ModuleList([weight(dim, dim, factorize_k) for _ in range(iters)])
 
     def forward(self, x, h):
@@ -25,8 +23,7 @@ class Mogrifier(nn.Module):
         *_, dim = shape
         assert dim == self.dim, f'mogrifier accepts a dimension of {self.dim}'
 
-        x = x.reshape(-1, dim)
-        h = h.reshape(-1, dim)
+        x, h = map(lambda t: t.reshape(-1, dim), (x, h))
 
         for ind, W in enumerate(self.weights):
             if (ind % 2) == 1:
@@ -34,6 +31,5 @@ class Mogrifier(nn.Module):
             else:
                 h = 2 * W(x).sigmoid() * h
 
-        x = x.reshape(*shape)
-        h = h.reshape(*shape)
+        x, h = map(lambda t: t.reshape(*shape), (x, h))
         return x, h

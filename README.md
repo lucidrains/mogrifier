@@ -41,3 +41,5 @@ x_out, h_out = m(x, h) # (1, 16, 512), (1, 16, 512)
     url={https://openreview.net/forum?id=SJe5P6EYvS}
 }
 ```
+
+<img src="./transmogrifier.jpg" width="700px"></img>

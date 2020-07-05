@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'mogrifier',
   packages = find_packages(),
-  version = '0.0.2',
+  version = '0.0.3',
   license='MIT',
   description = 'Implementation of Mogrifier circuit from Deepmind',
   author = 'Phil Wang',

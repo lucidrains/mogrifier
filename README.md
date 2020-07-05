@@ -4,7 +4,7 @@
 
 ## Mogrifier
 
-A complete implementation of <a href="https://openreview.net/forum?id=SJe5P6EYvS">Mogrifier</a>, a circuit for enhancing LSTMs and potentially other networks. It modulates two vectors by having each gate the other in an interleaved fashion.
+A complete implementation of <a href="https://openreview.net/forum?id=SJe5P6EYvS">Mogrifier</a>, a circuit for enhancing LSTMs and potentially other networks. It allows two vectors to modulate each other by having each gate the other in an interleaved, iterative fashion.
 
 ## Install
 

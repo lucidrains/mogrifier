@@ -20,7 +20,7 @@ from mogrifier import Mogrifier
 
 m = Mogrifier(
     dim = 512,
-    iters = 5,   		# number of iterations, defaults to 5 as paper recommended for LSTM
+    iters = 5,          # number of iterations, defaults to 5 as paper recommended for LSTM
     factorize_k = 16    # factorize weight matrices into (dim x k) and (k x dim), if specified
 )
 

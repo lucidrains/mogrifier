@@ -18,27 +18,31 @@ $ pip install mogrifier
 import torch
 from mogrifier import Mogrifier
 
-m = Mogrifier(
+mogrify = Mogrifier(
     dim = 512,
+    dim_hidden = 256,
     iters = 5,          # number of iterations, defaults to 5 as paper recommended for LSTM
     factorize_k = 16    # factorize weight matrices into (dim x k) and (k x dim), if specified
 )
 
 x = torch.randn(1, 16, 512)
-h = torch.randn(1, 16, 512)
+h = torch.randn(1, 16, 256)
 
-x_out, h_out = m(x, h) # (1, 16, 512), (1, 16, 512)
+out, hidden_out = mogrify(x, h) # (1, 16, 512), (1, 16, 256)
+
+assert out.shape == x.shape
+assert hidden_out.shape == h.shape
 ```
 
 ## Citation
 
 ```bibtex
 @inproceedings{Melis2020Mogrifier,
-    title={Mogrifier LSTM},
-    author={Gábor Melis and Tomáš Kočiský and Phil Blunsom},
-    booktitle={International Conference on Learning Representations},
-    year={2020},
-    url={https://openreview.net/forum?id=SJe5P6EYvS}
+    title   = {Mogrifier LSTM},
+    author  = {Gábor Melis and Tomáš Kočiský and Phil Blunsom},
+    booktitle = {International Conference on Learning Representations},
+    year    = {2020},
+    url     = {https://openreview.net/forum?id=SJe5P6EYvS}
 }
 ```
 

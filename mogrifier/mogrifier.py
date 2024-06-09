@@ -4,7 +4,7 @@ import torch
 from torch import nn, Tensor
 from torch.nn import Module
 
-from einops import pack, unpack
+from einops import repeat, pack, unpack
 
 # constants
 
@@ -42,7 +42,7 @@ class Mogrifier(Module):
         iters = 5,
         factorize_k: int | None = None,
         dim_hidden: int | None = None,
-        hidden_factorize_k: int | None = None
+        hidden_factorize_k: int | None = None,
     ):
         super().__init__()
         assert iters > 1
@@ -73,6 +73,9 @@ class Mogrifier(Module):
         iters: int | None = None
     ):
         iters = default(iters, self.iters)
+
+        if inputs.ndim == 3 and hiddens.ndim == 2:
+            hiddens = repeat(hiddens, 'b d -> b n d', n = inputs.shape[-2])
 
         assert inputs.shape[-1] == self.dim
         assert hiddens.shape[-1] == self.dim_hidden
